@@ -1,0 +1,186 @@
+@import '@fontsource-variable/inter-tight';
+@import '@fontsource-variable/jetbrains-mono';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+:root[data-theme='dark'] {
+  --bg: 10 10 11;
+  --surface: 19 19 21;
+  --fg: 236 235 230;
+  --muted: 148 148 154;
+  --line: 52 52 57;
+  --accent: 204 255 0;
+  --accent-ink: 10 10 11;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: 247 246 242;
+  --surface: 255 255 255;
+  --fg: 20 20 22;
+  --muted: 95 95 104;
+  --line: 214 217 224;
+  --accent: 37 99 235;
+  --accent-ink: 255 255 255;
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    overflow-x: hidden;
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--accent-ink));
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  /* Short, cheap colour transition only while the theme is being switched */
+  html.theme-switching *,
+  html.theme-switching *::before,
+  html.theme-switching *::after {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
+  }
+}
+
+@layer components {
+  .label {
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgb(var(--line) / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--line) / 0.35) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-12;
+  }
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-6 text-sm font-medium transition-[transform,background-color,color,border-color] duration-200 active:scale-[0.98];
+  }
+  .btn-primary {
+    @apply border-accent bg-accent text-accent-ink hover:bg-transparent hover:text-accent;
+  }
+  .btn-ghost {
+    @apply border-line text-fg hover:border-fg;
+  }
+}
+
+/* Kinetic (rolling) link text: two stacked copies clipped to one line */
+.roll-wrap {
+  display: inline-block;
+}
+.roll {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  line-height: 1.3;
+  height: 1.3em;
+}
+.roll > span {
+  display: block;
+  white-space: nowrap;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.roll > span + span {
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+a:hover .roll > span,
+a:focus-visible .roll > span,
+button:hover .roll > span,
+button:focus-visible .roll > span {
+  transform: translateY(-100%);
+}
+
+/* Skills marquee: two identical groups, each shifted exactly one group width */
+.marquee {
+  display: flex;
+  overflow: hidden;
+}
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  padding-right: 3rem;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-group,
+.marquee:focus-within .marquee-group {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Custom cursor is opt-in via a class on <html>, set only for fine pointers */
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button {
+  cursor: none;
+}
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor select {
+  cursor: text;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes scroll-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee {
+    flex-wrap: wrap;
+  }
+  .marquee-group {
+    animation: none;
+    flex-wrap: wrap;
+    padding-right: 0;
+  }
+  .marquee-group[aria-hidden='true'] {
+    display: none;
+  }
+  .pulse-dot,
+  .scroll-cue-line {
+    animation: none !important;
+  }
+  .roll > span {
+    transition: none;
+  }
+}

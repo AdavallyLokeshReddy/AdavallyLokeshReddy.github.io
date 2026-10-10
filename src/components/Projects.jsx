@@ -1,0 +1,163 @@
+import { useRef, useState } from 'react'
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
+import { ArrowUpRight, Minus, Plus } from 'lucide-react'
+import { projects } from '../data/projects'
+import { profile } from '../data/profile'
+import { useFinePointer } from '../hooks/useFinePointer'
+import FadeIn from './motion/FadeIn'
+import ProjectVisual from './ProjectVisual'
+import Status from './ui/Status'
+
+const PW = 320 // preview width
+const PH = 200 // preview height
+const GAP = 28
+const EDGE = 16
+
+function clampPos(px, py, flipFrom) {
+  let x = px + GAP
+  if (x + PW > window.innerWidth - EDGE) x = (flipFrom ?? px) - PW - GAP
+  x = Math.max(EDGE, x)
+  const y = Math.min(Math.max(py - PH / 2, EDGE), window.innerHeight - PH - EDGE)
+  return [x, y]
+}
+
+export default function Projects() {
+  const fine = useFinePointer()
+  const reduce = useReducedMotion()
+  const previewOn = fine && !reduce
+  const [active, setActive] = useState(null)
+  const [last, setLast] = useState(projects[0].id)
+  const [open, setOpen] = useState(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const sx = useSpring(x, { stiffness: 380, damping: 38, mass: 0.5 })
+  const sy = useSpring(y, { stiffness: 380, damping: 38, mass: 0.5 })
+  const shown = useRef(false)
+
+  const place = (px, py, flip) => {
+    const [nx, ny] = clampPos(px, py, flip)
+    x.set(nx)
+    y.set(ny)
+    if (!shown.current) {
+      sx.jump(nx)
+      sy.jump(ny)
+      shown.current = true
+    }
+  }
+
+  const show = (id) => {
+    setActive(id)
+    setLast(id)
+  }
+  const hide = () => {
+    shown.current = false
+    setActive(null)
+  }
+
+  const onMove = (e) => {
+    if (previewOn && active) place(e.clientX, e.clientY)
+  }
+  const onFocus = (id, el) => {
+    if (!previewOn) return
+    const r = el.getBoundingClientRect()
+    show(id)
+    place(r.right - PW - GAP * 2, r.top + r.height / 2, r.left)
+  }
+
+  return (
+    <div onPointerMove={onMove}>
+      <FadeIn>
+        <ul className="border-b border-line">
+          {projects.map((pr, i) => {
+            const expanded = open === pr.id
+            return (
+              <li
+                key={pr.id}
+                className="border-t border-line"
+                onPointerEnter={(e) => {
+                  if (previewOn && e.pointerType === 'mouse') {
+                    show(pr.id)
+                    place(e.clientX, e.clientY)
+                  }
+                }}
+                onPointerLeave={hide}
+              >
+                <article className="grid gap-6 py-8 md:grid-cols-12 md:gap-8 md:py-10" aria-labelledby={`p-${pr.id}`}>
+                  <p className="label md:col-span-1">{String(i + 2).padStart(2, '0')}</p>
+
+                  <div className={`md:col-span-7 ${i === 1 ? 'lg:col-span-6 lg:col-start-3' : 'lg:col-span-6'}`}>
+                    <p className="label mb-3">{pr.category}</p>
+                    <h3 id={`p-${pr.id}`} className="text-3xl font-semibold tracking-tight md:text-5xl">
+                      {pr.title}
+                    </h3>
+                    <p className="mt-4 max-w-xl text-lg text-muted">{pr.summary}</p>
+                    <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies">
+                      {pr.tags.map((t) => (
+                        <li key={t} className="rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-col items-start gap-5 md:col-span-4 md:items-end lg:col-span-3">
+                    <Status status="implemented" />
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      aria-controls={`d-${pr.id}`}
+                      onClick={() => setOpen(expanded ? null : pr.id)}
+                      onFocus={(e) => onFocus(pr.id, e.currentTarget.closest('article'))}
+                      onBlur={hide}
+                      className="btn btn-ghost !min-h-[44px] !px-5"
+                    >
+                      {expanded ? <Minus size={16} aria-hidden="true" /> : <Plus size={16} aria-hidden="true" />}
+                      {expanded ? 'Hide details' : 'View details'}
+                    </button>
+                  </div>
+
+                  {/* Inline visual for devices without hover-preview */}
+                  {!previewOn && (
+                    <div className="overflow-hidden rounded-lg border border-line md:col-span-12">
+                      <ProjectVisual id={pr.id} />
+                    </div>
+                  )}
+
+                  {expanded && (
+                    <div id={`d-${pr.id}`} className="md:col-span-11 md:col-start-2">
+                      <p className="max-w-2xl text-base leading-relaxed md:text-lg">{pr.detail}</p>
+                      <p className="mt-5">
+                        <a
+                          href={pr.repo ?? profile.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm text-accent underline-offset-4 hover:underline"
+                        >
+                          {pr.repo ? 'View repository' : 'See my work on GitHub'}
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                          <span className="sr-only">(opens in a new tab)</span>
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                </article>
+              </li>
+            )
+          })}
+        </ul>
+      </FadeIn>
+
+      {previewOn && (
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none fixed left-0 top-0 z-[60] overflow-hidden rounded-lg border border-line shadow-2xl"
+          style={{ x: sx, y: sy, width: PW, height: PH }}
+          animate={{ opacity: active ? 1 : 0, scale: active ? 1 : 0.94 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ProjectVisual id={last} />
+        </motion.div>
+      )}
+    </div>
+  )
+}
