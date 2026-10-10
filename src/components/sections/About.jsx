@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="border-t border-line py-24 md:py-36">
       <div className="container-x">
-        <SectionHeading id="about-title" index="02" kicker="About" title="The person behind the systems." />
+        <SectionHeading id="about-title" index="03" kicker="About" title="The person behind the systems." />
 
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">
@@ -26,7 +26,7 @@ export default function About() {
             </p>
             <p className="text-muted">
               Right now I’m working on a head CT analysis pipeline, learning PyTorch and MONAI properly, and getting more
-              disciplined about evaluation. I’m looking for an internship or entry-level role where I can contribute to a
+              disciplined about evaluation. Alongside building, I’ve taken on leadership responsibility in IE Cell, as Joint Secretary and then President. I’m looking for an internship or entry-level role where I can contribute to a
               real engineering team and learn from people who ship.
             </p>
           </FadeIn>

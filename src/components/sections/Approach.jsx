@@ -14,7 +14,7 @@ export default function Approach() {
   return (
     <section id="approach" aria-labelledby="approach-title" className="border-t border-line py-24 md:py-36">
       <div className="container-x">
-        <SectionHeading id="approach-title" index="03" kicker="Approach" title="How I like to work." />
+        <SectionHeading id="approach-title" index="04" kicker="Approach" title="How I like to work." />
         <p className="-mt-6 mb-12 max-w-2xl text-muted md:mb-16">
           These are the principles I’m building towards. Not every project of mine applies all of them yet.
         </p>

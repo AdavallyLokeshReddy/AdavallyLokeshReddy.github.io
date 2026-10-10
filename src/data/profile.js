@@ -10,6 +10,7 @@ export const profile = {
 
 export const navItems = [
   { id: 'work', label: 'Work' },
+  { id: 'leadership', label: 'Leadership' },
   { id: 'about', label: 'About' },
   { id: 'approach', label: 'Approach' },
   { id: 'skills', label: 'Skills' },
@@ -27,5 +28,6 @@ export const education = {
 export const credentials = [
   { name: 'Cambridge English B2', issuer: 'Cambridge English', note: 'English language qualification', verified: true },
   { name: 'Data Structures and Algorithms Using Java', issuer: 'NPTEL · IIT Kharagpur', note: 'Online course certification', verified: true },
-  { name: 'Reinforcement Learning', issuer: 'NPTEL', note: 'Online course certification', verified: true },
+  // Hidden until a passing result or certificate is confirmed (earlier info was exam registration only).
+  { name: 'Reinforcement Learning', issuer: 'NPTEL', note: 'Online course certification', verified: false },
 ]

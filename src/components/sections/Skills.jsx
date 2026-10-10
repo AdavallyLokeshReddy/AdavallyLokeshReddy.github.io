@@ -32,7 +32,7 @@ export default function Skills() {
   return (
     <section id="skills" aria-labelledby="skills-title" className="border-t border-line py-24 md:py-36">
       <div className="container-x">
-        <SectionHeading id="skills-title" index="04" kicker="Skills & education" title="What I work with, honestly labelled." />
+        <SectionHeading id="skills-title" index="05" kicker="Skills & education" title="What I work with, honestly labelled." />
 
         <FadeIn>
           <ul className="mb-12 flex flex-wrap gap-x-6 gap-y-2" aria-label="Legend">

@@ -3,6 +3,7 @@ import CustomCursor from './components/CustomCursor'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
+import Leadership from './components/sections/Leadership'
 import About from './components/sections/About'
 import Approach from './components/sections/Approach'
 import Contact from './components/sections/Contact'
@@ -23,6 +24,7 @@ export default function App() {
       <main>
         <Hero />
         <Work />
+        <Leadership />
         <About />
         <Approach />
         <Skills />
