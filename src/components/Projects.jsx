@@ -5,7 +5,7 @@ import { flagship, projects } from '../data/projects'
 import FlagshipDetails from './FeaturedProject'
 import { useFinePointer } from '../hooks/useFinePointer'
 import FadeIn from './motion/FadeIn'
-import ProjectVisual from './ProjectVisual'
+import ProjectPreview from './ProjectPreview'
 import Status from './ui/Status'
 
 // The flagship appears in the same list as every other project; its full case study opens under "View details".
@@ -17,12 +17,15 @@ const items = [
     summary: flagship.brief,
     tags: flagship.tags,
     state: 'in-progress',
+    flowTitle: 'CT pipeline',
+    flow: flagship.stages.map((st) => ({ t: st.label, s: st.status })),
+    flowNote: 'Status of each stage today. Not clinically validated.',
   },
   ...projects,
 ]
 
 const PW = 320 // preview width
-const PH = 200 // preview height
+const PH = 268 // preview height
 const GAP = 28
 const EDGE = 16
 
@@ -79,14 +82,14 @@ export default function Projects() {
 
   return (
     <div onPointerMove={onMove}>
-      <FadeIn>
+      <div>
         <ul className="border-b border-line">
           {items.map((pr, i) => {
             const expanded = open === pr.id
             return (
               <li
                 key={pr.id}
-                className="border-t border-line"
+                className="group relative border-t border-line"
                 onPointerEnter={(e) => {
                   if (previewOn && e.pointerType === 'mouse') {
                     show(pr.id)
@@ -95,18 +98,23 @@ export default function Projects() {
                 }}
                 onPointerLeave={hide}
               >
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-4 top-0 h-full w-[2px] origin-top scale-y-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-y-100 group-focus-within:scale-y-100 motion-reduce:transition-none"
+                />
+                <FadeIn delay={i * 0.08}>
                 <article className="grid gap-6 py-8 md:grid-cols-12 md:gap-8 md:py-10" aria-labelledby={`p-${pr.id}`}>
-                  <p className="label md:col-span-1">{String(i + 1).padStart(2, '0')}</p>
+                  <p className="label transition-colors duration-300 group-hover:text-accent md:col-span-1">{String(i + 1).padStart(2, '0')}</p>
 
                   <div className={`md:col-span-7 ${i % 2 === 1 ? 'lg:col-span-6 lg:col-start-3' : 'lg:col-span-6'}`}>
                     <p className="label mb-3">{pr.category}</p>
-                    <h3 id={`p-${pr.id}`} className="text-3xl font-semibold tracking-tight md:text-5xl">
+                    <h3 id={`p-${pr.id}`} className="text-3xl font-semibold tracking-tight transition-transform duration-300 ease-out group-hover:translate-x-2 motion-reduce:transform-none md:text-5xl">
                       {pr.title}
                     </h3>
                     <p className="mt-4 max-w-xl text-lg text-muted">{pr.summary}</p>
                     <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies">
                       {pr.tags.map((t) => (
-                        <li key={t} className="rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
+                        <li key={t} className="rounded-full border border-line px-3 py-1 font-mono text-xs text-muted transition-colors duration-300 group-hover:border-fg/60">
                           {t}
                         </li>
                       ))}
@@ -130,10 +138,10 @@ export default function Projects() {
                     </button>
                   </div>
 
-                  {/* Inline visual for devices without hover-preview */}
+                  {/* Same card, inline, for devices without a hover preview */}
                   {!previewOn && (
-                    <div className="overflow-hidden rounded-lg border border-line md:col-span-12">
-                      <ProjectVisual id={pr.id} />
+                    <div className="md:col-span-12">
+                      <ProjectPreview item={pr} inline />
                     </div>
                   )}
 
@@ -165,11 +173,12 @@ export default function Projects() {
                     </div>
                   )}
                 </article>
+                </FadeIn>
               </li>
             )
           })}
         </ul>
-      </FadeIn>
+      </div>
 
       {previewOn && (
         <motion.div
@@ -179,7 +188,7 @@ export default function Projects() {
           animate={{ opacity: active ? 1 : 0, scale: active ? 1 : 0.94 }}
           transition={{ duration: 0.2 }}
         >
-          <ProjectVisual id={last} />
+          <ProjectPreview item={items.find((it) => it.id === last)} />
         </motion.div>
       )}
     </div>

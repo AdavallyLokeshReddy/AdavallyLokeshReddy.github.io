@@ -89,9 +89,12 @@ export const projects = [
     summary: 'A retrieval-based question-answering application that answers questions from a document collection.',
     tags: ['OpenAI', 'Pinecone', 'RAG'],
     status: 'Built',
-    // TODO(verify): confirm the document source (e.g. a university handbook) and whether LangChain was used.
+    flowTitle: 'How it answers',
+    flow: [{ t: 'A question comes in' }, { t: 'Relevant passages are retrieved (Pinecone)' }, { t: 'An OpenAI model writes the answer' }],
+    flowNote: 'Built around a notebook in the repository.',
+    // TODO(verify): add the document source (e.g. a university handbook) and whether LangChain was used.
     detail:
-      'A retrieval-augmented question-answering bot built around a notebook in the repository, using OpenAI and Pinecone. Confirm the source documents and add LangChain here only if it was used.',
+      'A retrieval-augmented question-answering bot built around a notebook in the repository, using OpenAI and Pinecone.',
     repo: 'https://github.com/AdavallyLokeshReddy/RAG',
     demo: null,
   },
@@ -102,6 +105,9 @@ export const projects = [
     summary: 'A Flask app that classifies a banknote as genuine or fake from six physical measurements.',
     tags: ['Python', 'scikit-learn', 'Flask'],
     status: 'Built',
+    flowTitle: 'How it decides',
+    flow: [{ t: 'Six measurements entered in a form' }, { t: 'Inputs validated' }, { t: 'Saved model predicts' }, { t: 'Shows Genuine or Fake' }],
+    flowNote: 'No accuracy figures are claimed.',
     detail:
       'A trained classifier is saved with joblib and loaded by a small Flask app. A form takes six numeric measurements (diagonal, left and right height, lower and upper margin, length), validates them, and returns "Genuine" or "Fake". The repository includes the training notebook. I have not published evaluation figures, so none are claimed here.',
     repo: 'https://github.com/AdavallyLokeshReddy/Fake_bill',
@@ -114,6 +120,9 @@ export const projects = [
     summary: 'A computer-vision project on object detection and tracking.',
     tags: ['Python', 'OpenCV', 'YOLO'],
     status: 'Built',
+    flowTitle: 'What it does',
+    flow: [{ t: 'Takes images or video' }, { t: 'Detects objects (YOLO)' }, { t: 'Tracks them' }],
+    flowNote: 'No public repository or demo.',
     detail:
       'A computer-vision project using Python, OpenCV and YOLO for object detection and tracking. There is no public repository or demo for it, so none is linked here and no results are claimed.',
     repo: null,

@@ -60,12 +60,12 @@ export default function Skills() {
         </FadeIn>
 
         <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
-          {skillGroups.map((g) => (
-            <FadeIn key={g.title} className="border-t border-line pt-6">
+          {skillGroups.map((g, gi) => (
+            <FadeIn key={g.title} delay={(gi % 2) * 0.08} className="border-t border-line pt-6">
               <h3 className="mb-5 text-xl font-semibold tracking-tight">{g.title}</h3>
               <ul className="flex flex-wrap gap-2">
                 {g.items.map((s) => (
-                  <li key={s.name} className="flex items-center gap-2 rounded-full border border-line px-3.5 py-1.5 text-sm">
+                  <li key={s.name} className="flex items-center gap-2 rounded-full border border-line px-3.5 py-1.5 text-sm transition-colors duration-200 hover:border-fg">
                     <span aria-hidden="true" className={`h-2 w-2 rounded-full ${dot[s.level]}`} />
                     {s.name}
                     <span className="sr-only"> — {levelLabel[s.level]}</span>

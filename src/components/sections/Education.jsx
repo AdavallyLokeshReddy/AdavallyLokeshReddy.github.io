@@ -20,11 +20,11 @@ export default function Education() {
         </FadeIn>
 
         {verified.length > 0 && (
-          <FadeIn className="mt-10 grid gap-6 border-t border-line pt-8 md:grid-cols-12">
+          <FadeIn delay={0.08} className="mt-10 grid gap-6 border-t border-line pt-8 md:grid-cols-12">
             <h3 className="label md:col-span-3">Certifications</h3>
             <ul className="grid gap-4 md:col-span-9 md:grid-cols-3">
               {verified.map((c) => (
-                <li key={c.name} className="border border-line p-5">
+                <li key={c.name} className="border border-line p-5 transition-colors duration-300 hover:border-accent">
                   <p className="font-semibold leading-snug">{c.name}</p>
                   <p className="mt-2 text-sm text-muted">{c.issuer}</p>
                   <p className="label mt-4 normal-case tracking-normal">{c.note}</p>

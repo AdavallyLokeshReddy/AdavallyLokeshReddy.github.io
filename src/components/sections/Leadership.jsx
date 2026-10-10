@@ -6,13 +6,13 @@ import { leadership } from '../../data/leadership'
 
 function EventRow({ e, i }) {
   return (
-    <li className="border-t border-line">
-      <FadeIn className="grid gap-3 py-6 md:grid-cols-12 md:gap-8 md:py-8">
+    <li className="group border-t border-line">
+      <FadeIn delay={Math.min(i * 0.04, 0.16)} className="grid gap-3 py-6 md:grid-cols-12 md:gap-8 md:py-8">
         <p className="label md:col-span-3">
           {String(i + 1).padStart(2, '0')} · {e.role}
         </p>
         <div className="md:col-span-5">
-          <h4 className={`font-semibold tracking-tight ${e.featured ? 'text-2xl md:text-4xl' : 'text-xl md:text-2xl'}`}>{e.name}</h4>
+          <h4 className={`font-semibold tracking-tight transition-colors duration-300 group-hover:text-accent ${e.featured ? 'text-2xl md:text-4xl' : 'text-xl md:text-2xl'}`}>{e.name}</h4>
           {e.subtitle && <p className="label mt-2 normal-case tracking-normal">{e.subtitle}</p>}
         </div>
         <div className="space-y-4 md:col-span-4">
@@ -80,11 +80,12 @@ export default function Leadership() {
           <div className="md:col-span-7">
             <h3 className="label mb-6">How I work with people</h3>
             <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
-              {leadership.strengths.map((s) => (
-                <li key={s.title} className="border-t border-line pt-4">
-                  <FadeIn>
+              {leadership.strengths.map((s, i) => (
+                <li key={s.title} className="group border-t border-line pt-4 transition-colors duration-300 hover:border-accent">
+                  <FadeIn delay={i * 0.07}>
                     <h4 className="font-semibold">{s.title}</h4>
                     <p className="mt-2 text-sm leading-relaxed text-muted md:text-base">{s.text}</p>
+                    {s.from && <p className="label mt-3 normal-case tracking-normal">{s.from}</p>}
                   </FadeIn>
                 </li>
               ))}

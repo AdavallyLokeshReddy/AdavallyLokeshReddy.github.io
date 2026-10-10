@@ -21,10 +21,10 @@ export default function Approach() {
         </p>
         <ol className="border-b border-line">
           {principles.map(([t, d], i) => (
-            <li key={t} className="border-t border-line">
-              <FadeIn className="grid gap-2 py-6 md:grid-cols-12 md:gap-8 md:py-8">
-                <span className="label md:col-span-1">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="text-xl font-semibold tracking-tight md:col-span-6 md:text-3xl">{t}</h3>
+            <li key={t} className="group border-t border-line">
+              <FadeIn delay={Math.min(i * 0.03, 0.12)} className="grid gap-2 py-6 md:grid-cols-12 md:gap-8 md:py-8">
+                <span className="label transition-colors duration-300 group-hover:text-accent md:col-span-1">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="text-xl font-semibold tracking-tight transition-transform duration-300 ease-out group-hover:translate-x-1.5 motion-reduce:transform-none md:col-span-6 md:text-3xl">{t}</h3>
                 <p className="text-muted md:col-span-5 md:text-lg">{d}</p>
               </FadeIn>
             </li>

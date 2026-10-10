@@ -15,23 +15,28 @@ export const leadership = {
     { title: 'President', period: 'Dec 2025 – Feb 2026', length: '~3 months' },
   ],
 
-  // How I work with people. Wording is careful: "experience in", "contributed to", "developing".
+  // How I work with people. First person and tied to roles and events stated above.
+  // `from` shows where each one comes from. Edit the wording freely; keep claims to things you actually did.
   strengths: [
     {
-      title: 'Planning & execution',
-      text: 'Experience planning events and following them through, from the first idea to the day itself, including the details that keep a plan on schedule.',
+      title: 'Planning and follow-through',
+      text: 'I planned entrepreneurship events and stayed with them until the day itself, including the small details that keep a schedule from slipping.',
+      from: 'Startup Odyssey · Illuminate',
     },
     {
-      title: 'Team coordination',
-      text: 'Contributed to coordinating student teams: sharing out responsibilities and keeping everyone working towards the same plan.',
+      title: 'Working with a team',
+      text: 'As Joint Secretary and then President of IE Cell, and as main student coordinator for Navnirman 3.0, I helped split the work between student teams and keep everyone on the same plan.',
+      from: 'IE Cell · Navnirman 3.0',
     },
     {
-      title: 'Communication & representation',
-      text: 'Communicating with participants and stakeholders, representing my university in external competition, and developing my public speaking.',
+      title: 'Talking to people',
+      text: 'I dealt with participants and other teams directly, and I was part of the team that represented my university at NEC 2025 at IIT Bombay. Public speaking is something I am still improving.',
+      from: 'NEC 2025 · Agentic AI Hackathon',
     },
     {
-      title: 'Initiative & creative strategy',
-      text: 'Supporting entrepreneurship and startup-related initiatives, and helping turn ideas into completed activities.',
+      title: 'Starting things',
+      text: 'I like helping an idea for a startup or entrepreneurship activity become something that actually happens, not just something we talked about.',
+      from: 'IE Cell initiatives',
     },
   ],
 
