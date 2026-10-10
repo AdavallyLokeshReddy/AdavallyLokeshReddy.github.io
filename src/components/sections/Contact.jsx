@@ -5,7 +5,10 @@ import { profile } from '../../data/profile'
 import FadeIn from '../motion/FadeIn'
 import SectionHeading from '../ui/SectionHeading'
 
-const KEY = import.meta.env.VITE_WEB3FORMS_KEY
+// Web3Forms access keys are public by design (they appear in every page that uses the service) and can only send to the
+// email address they were created for. Lock this key to your site's domain in the Web3Forms dashboard.
+// A VITE_WEB3FORMS_KEY build variable, if set, takes priority.
+const KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'c40ea592-cffc-4637-8726-481d695cea58'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function validate(v) {
@@ -41,7 +44,7 @@ const input =
 
 export default function Contact() {
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | sending | success | error | fallback
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
   const formRef = useRef(null)
   const abortRef = useRef(null)
 
@@ -59,14 +62,6 @@ export default function Contact() {
     const firstBad = Object.keys(found)[0]
     if (firstBad) {
       formRef.current.elements[firstBad]?.focus()
-      return
-    }
-
-    if (!KEY) {
-      const subject = encodeURIComponent(`Portfolio message from ${values.name.trim()}`)
-      const body = encodeURIComponent(`${values.message.trim()}\n\n— ${values.name.trim()} (${values.email.trim()})`)
-      window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
-      setStatus('fallback')
       return
     }
 
@@ -154,7 +149,7 @@ export default function Contact() {
             <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
             <button type="submit" disabled={sending} aria-disabled={sending} className="btn btn-primary w-full disabled:opacity-60 sm:w-auto">
-              {sending ? 'Sending…' : KEY ? 'Send message' : 'Open in email app'}
+              {sending ? 'Sending…' : 'Send message'}
             </button>
 
             <p id="form-status" role="status" aria-live="polite" className="min-h-[1.5rem] text-sm">
@@ -166,12 +161,6 @@ export default function Contact() {
                     {profile.email}
                   </a>
                   .
-                </span>
-              )}
-              {status === 'fallback' && (
-                <span>
-                  Your email app should have opened with a draft. Nothing is sent until you send it. If it didn’t open,
-                  write to {profile.email}.
                 </span>
               )}
             </p>

@@ -22,14 +22,13 @@ All copy lives in `src/data/`:
 
 ## Contact form
 
-Set `VITE_WEB3FORMS_KEY` (see `.env.example`) with your public Web3Forms access key and restrict it to your domain in the Web3Forms dashboard.
-Without a key, the form validates and opens a pre-filled email draft instead; it never reports a message as sent unless the provider confirms it.
+The form sends through Web3Forms and delivers to the email the access key was created for. The public key is built in (`src/components/sections/Contact.jsx`); a `VITE_WEB3FORMS_KEY` build variable overrides it. Web3Forms keys are public by design, so restrict yours to your domain in the Web3Forms dashboard. The form never reports a message as sent unless the provider confirms it; on failure it shows an error and an email link.
 
 ## Deploy to GitHub Pages
 
 1. Create a public repo named `AdavallyLokeshReddy.github.io` and push this project to `main`.
 2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not use "Deploy from a branch": it publishes the unbuilt source and the site renders blank.
-3. Repo **Settings → Secrets and variables → Actions → New repository secret**: `WEB3FORMS_KEY` = your public Web3Forms key.
+3. Optional: **Settings → Secrets and variables → Actions → New repository secret** `WEB3FORMS_KEY` to override the built-in key.
 4. Every push to `main` runs `.github/workflows/deploy.yml` (lint, build, deploy). Live at https://adavallylokeshreddy.github.io/
 
 For a differently named repo, set `VITE_BASE=/<repo>/` in the workflow's build step.

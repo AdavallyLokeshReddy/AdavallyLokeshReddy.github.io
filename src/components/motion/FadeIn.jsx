@@ -3,8 +3,8 @@ import { motion, useReducedMotion } from 'framer-motion'
 export const ease = [0.22, 1, 0.36, 1]
 
 const variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (delay = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, ease, delay } }),
+  hidden: { opacity: 0, y: 18 },
+  show: (delay = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.55, ease, delay } }),
 }
 
 const still = { hidden: { opacity: 1, y: 0 }, show: { opacity: 1, y: 0 } }

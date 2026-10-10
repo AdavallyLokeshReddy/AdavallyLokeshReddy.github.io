@@ -4,47 +4,53 @@ import { gallery } from '../data/leadership'
 import { Linkedin } from './ui/BrandIcons'
 
 const base = import.meta.env.BASE_URL
-const card = 'flex h-[270px] w-[280px] shrink-0 flex-col overflow-hidden rounded-lg border border-line bg-surface sm:h-[300px] sm:w-[340px] md:h-[330px] md:w-[400px]'
+const card =
+  'flex h-[330px] w-[270px] shrink-0 flex-col overflow-hidden rounded-lg border border-line bg-surface sm:h-[380px] sm:w-[330px] md:h-[420px] md:w-[400px]'
+
+function Picture({ item, hidden }) {
+  return (
+    <div className="min-h-0 flex-1 overflow-hidden" style={item.bg ? { backgroundColor: item.bg } : undefined}>
+      <img
+        src={`${base}${item.file}`}
+        alt={hidden ? '' : item.alt}
+        width={item.width}
+        height={item.height}
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+        className={`h-full w-full ${item.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+      />
+    </div>
+  )
+}
 
 function Card({ item, hidden }) {
   if (item.type === 'photo') {
     return (
       <figure className={card}>
-        <div className="min-h-0 flex-1 overflow-hidden">
-          <img
-            src={`${base}${item.file}`}
-            alt={hidden ? '' : item.alt}
-            width={item.width}
-            height={item.height}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <Picture item={item} hidden={hidden} />
         <figcaption className="label border-t border-line px-4 py-3 normal-case tracking-normal">{item.caption}</figcaption>
       </figure>
     )
   }
-  const n = String(item.n).padStart(2, '0')
+
+  const link = {
+    href: item.url,
+    target: '_blank',
+    rel: 'noopener noreferrer',
+    tabIndex: hidden ? -1 : undefined,
+  }
+
   return (
-    <a
-      href={item.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      tabIndex={hidden ? -1 : undefined}
-      className={`${card} group justify-between p-5 transition-colors hover:border-accent md:p-6`}
-    >
-      <span className="label flex items-center gap-2">
-        <Linkedin size={14} />
-        LinkedIn post
-      </span>
-      <span aria-hidden="true" className="text-[5.5rem] font-semibold leading-none tracking-tighter text-muted/40 transition-colors group-hover:text-accent md:text-[7rem]">
-        {n}
-      </span>
-      <span className="flex items-center justify-between border-t border-line pt-4 text-sm">
-        {item.title ?? 'Read the post'}
-        <ArrowUpRight size={16} aria-hidden="true" className="text-accent" />
-        <span className="sr-only">{`(LinkedIn post ${n}, opens in a new tab)`}</span>
+    <a {...link} className={`${card} group transition-colors hover:border-accent`}>
+      <Picture item={item} hidden={hidden} />
+      <span className="flex items-center justify-between gap-3 border-t border-line px-4 py-3 text-sm">
+        <span className="flex min-w-0 items-center gap-2">
+          <Linkedin size={14} />
+          <span className="truncate">{item.caption}</span>
+        </span>
+        <ArrowUpRight size={16} aria-hidden="true" className="shrink-0 text-accent" />
+        <span className="sr-only">{`(LinkedIn post: ${item.caption}, opens in a new tab)`}</span>
       </span>
     </a>
   )
@@ -56,7 +62,7 @@ export default function IEGallery() {
   const group = (hidden) => (
     <ul className="marquee-group" aria-hidden={hidden || undefined}>
       {gallery.map((item) => (
-        <li key={item.file ?? item.url} className="flex">
+        <li key={item.url ?? item.file} className="flex">
           <Card item={item} hidden={hidden} />
         </li>
       ))}
@@ -64,7 +70,7 @@ export default function IEGallery() {
   )
   return (
     <div>
-      <div className="mb-6 flex justify-end">
+      <div className="container-x mb-6 flex justify-end">
         <button
           type="button"
           aria-pressed={paused}

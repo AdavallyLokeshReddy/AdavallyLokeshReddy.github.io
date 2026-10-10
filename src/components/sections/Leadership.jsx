@@ -68,7 +68,7 @@ export default function Leadership() {
             <p className="label mb-3">Gallery · photos & posts</p>
             <h3 className="text-3xl font-semibold tracking-tight md:text-5xl">IE Cell, in frames.</h3>
             <p className="mt-4 max-w-xl text-muted">
-              Photos from Startup Odyssey and four of my LinkedIn posts. Each post opens on LinkedIn.
+              Photos from Startup Odyssey and three of my LinkedIn posts. Each post opens on LinkedIn.
             </p>
           </FadeIn>
         </div>

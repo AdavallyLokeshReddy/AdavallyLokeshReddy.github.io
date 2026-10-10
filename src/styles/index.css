@@ -31,12 +31,24 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
     scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%;
   }
   body {
     @apply bg-bg text-fg font-sans antialiased;
     overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  a,
+  button,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   ::selection {
     background: rgb(var(--accent));
@@ -123,6 +135,8 @@ button:focus-visible .roll > span {
   gap: 3rem;
   padding-right: 3rem;
   animation: marquee 38s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 .marquee:hover .marquee-group,
 .marquee:focus-within .marquee-group {
@@ -184,6 +198,7 @@ html.has-custom-cursor select {
     animation: none;
     flex-wrap: wrap;
     padding-right: 0;
+    will-change: auto;
   }
   .marquee-group[aria-hidden='true'] {
     display: none;

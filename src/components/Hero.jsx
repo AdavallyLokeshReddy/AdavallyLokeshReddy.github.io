@@ -18,7 +18,7 @@ export default function Hero() {
       : {
           initial: { opacity: 0, y: 16 },
           animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.6, ease, delay },
+          transition: { duration: 0.5, ease, delay },
         }
   const line = (delay) =>
     reduce
@@ -26,7 +26,7 @@ export default function Hero() {
       : {
           initial: { y: '110%' },
           animate: { y: 0 },
-          transition: { duration: 0.85, ease, delay },
+          transition: { duration: 0.7, ease, delay },
         }
 
   return (
@@ -35,29 +35,29 @@ export default function Hero() {
 
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-[1.6fr_1fr]">
         <div>
-          <motion.p className="label mb-8 flex flex-wrap items-center gap-x-3 gap-y-2" {...rise(0.05)}>
+          <motion.p className="label mb-8 flex flex-wrap items-center gap-x-3 gap-y-2" {...rise(0.03)}>
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
             AI/ML engineering student · Hyderabad
           </motion.p>
 
           <h1 id="hero-title" className="text-display font-semibold lg:text-[clamp(4rem,8.2vw,7.25rem)]">
             <span className="block overflow-hidden whitespace-nowrap pb-[0.08em]">
-              <motion.span className="block" {...line(0.15)}>
+              <motion.span className="block" {...line(0.1)}>
                 Beyond models.
               </motion.span>
             </span>
             <span className="block overflow-hidden whitespace-nowrap pb-[0.08em]">
-              <motion.span className="block text-accent" {...line(0.27)}>
+              <motion.span className="block text-accent" {...line(0.2)}>
                 Into systems.
               </motion.span>
             </span>
           </h1>
 
-          <motion.p className="mt-8 max-w-xl text-lg leading-relaxed text-muted md:text-xl" {...rise(0.5)}>
+          <motion.p className="mt-8 max-w-xl text-lg leading-relaxed text-muted md:text-xl" {...rise(0.38)}>
             I build intelligent systems that connect machine learning, computer vision, and practical software.
           </motion.p>
 
-          <motion.div className="mt-10 flex flex-col gap-3 sm:flex-row" {...rise(0.62)}>
+          <motion.div className="mt-10 flex flex-col gap-3 sm:flex-row" {...rise(0.46)}>
             <a href="#work" onClick={(e) => go(e, 'work', reduce)} className="btn btn-primary">
               <Roll>Explore my work</Roll>
               <ArrowDownRight size={16} aria-hidden="true" />
@@ -67,7 +67,7 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          <motion.p className="label mt-8" {...rise(0.72)}>
+          <motion.p className="label mt-8" {...rise(0.54)}>
             Open to AI/ML internships · B.Tech 2027
           </motion.p>
         </div>
