@@ -14,6 +14,7 @@ export const navItems = [
   { id: 'approach', label: 'Approach' },
   { id: 'leadership', label: 'Leadership' },
   { id: 'skills', label: 'Skills' },
+  { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -25,8 +26,67 @@ export const education = {
   cgpa: '8.90 / 10',
 }
 
-export const credentials = [
-  { name: 'Cambridge English B2', issuer: 'Cambridge English', note: 'English language qualification', verified: true },
-  { name: 'Data Structures and Algorithms Using Java', issuer: 'NPTEL · IIT Kharagpur', note: 'Online course certification', verified: true },
-  { name: 'Reinforcement Learning', issuer: 'NPTEL', note: 'Course exam passed', verified: true },
+/**
+ * Every entry below is taken from a certificate the owner supplied.
+ * Wording follows the certificate itself: a completion certificate is not described as an exam pass,
+ * and a participation certificate is not described as a title. Scores are deliberately not shown.
+ */
+export const credentialGroups = [
+  {
+    title: 'Technical courses',
+    items: [
+      {
+        name: 'AWS Cloud Practitioner Essentials',
+        issuer: 'AWS Training & Certification',
+        date: 'Mar 2026',
+        note: 'Course completion certificate. An introduction to AWS cloud fundamentals.',
+      },
+      {
+        name: 'Reinforcement Learning',
+        issuer: 'NPTEL · IIT Madras',
+        date: 'Jul – Oct 2025',
+        note: 'Twelve-week course, successfully completed.',
+      },
+      {
+        name: 'Data Structures and Algorithms Using Java',
+        issuer: 'NPTEL · IIT Kharagpur',
+        date: 'Jul – Oct 2024',
+        note: 'Twelve-week course, successfully completed.',
+      },
+    ],
+  },
+  {
+    title: 'Competitions and programmes',
+    items: [
+      {
+        name: 'Google Student Ambassador Program',
+        issuer: 'Google Student Ambassador Program',
+        date: 'Dec 2025',
+        note: 'Certificate of Participation, for active participation and collaboration in the programme.',
+      },
+      {
+        name: 'Illuminate Entrepreneurship Bootcamp',
+        issuer: 'E-Cell, IIT Bombay',
+        date: 'Sep 2025',
+        note: 'Certificate of Appreciation for organising and conducting the bootcamp at Malla Reddy University.',
+      },
+      {
+        name: 'National Entrepreneurship Challenge 2025',
+        issuer: 'E-Cell, IIT Bombay',
+        date: '2025',
+        note: 'Advanced Track. My team secured Rank 47.',
+      },
+    ],
+  },
+  {
+    title: 'Language',
+    items: [
+      {
+        name: 'Cambridge English · B2',
+        issuer: 'Cambridge English',
+        date: '',
+        note: 'English language qualification.',
+      },
+    ],
+  },
 ]

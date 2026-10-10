@@ -92,8 +92,8 @@ export default function Navbar() {
           <span className="text-accent">.</span>
         </a>
 
-        <div className="flex items-center gap-2 md:gap-8">
-          <ul className="hidden items-center gap-8 md:flex">
+        <div className="flex items-center gap-2 md:gap-5 lg:gap-8">
+          <ul className="hidden items-center gap-4 md:flex lg:gap-8">
             {navItems.map((n) => (
               <li key={n.id}>
                 <a

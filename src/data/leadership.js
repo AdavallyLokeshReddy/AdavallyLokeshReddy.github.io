@@ -48,7 +48,7 @@ export const leadership = {
       role: 'Student Coordinator',
       featured: true,
       description:
-        'Student coordinator for the hackathon run by Google Developer Groups Hyderabad. The event set a Guinness World Records title for the most participants in an agentic AI hackathon (2,089 participants). The record belongs to the event; my part was student coordination.',
+        'I was a student coordinator for the hackathon run by Google Developer Groups Hyderabad at Malla Reddy University. The event set a Guinness World Record for the most participants in an agentic AI hackathon (2,089). The record belongs to the event as a whole; my part was coordinating on the student side.',
       links: [
         { label: 'LinkedIn post', url: 'https://lnkd.in/p/dHh_mEj6' },
         { label: 'Guinness World Records entry', url: 'https://www.guinnessworldrecords.com/world-records/778051-most-participants-in-an-agentic-ai-hackathon' },
@@ -57,28 +57,28 @@ export const leadership = {
     {
       name: 'Navnirman 3.0',
       role: 'Main Student Coordinator',
-      description: 'Took the main student coordinator role for the event.',
+      description: 'I was the main student coordinator for Navnirman 3.0.',
       links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/d-hCNp2u' }],
     },
     {
       name: 'Illuminate',
-      subtitle: 'Workshop on Entrepreneurship',
+      subtitle: 'Entrepreneurship Bootcamp · 4 Sep 2025 · with E-Cell, IIT Bombay',
       role: 'Event Lead',
-      description: 'Event lead for a workshop on entrepreneurship.',
+      description: 'I led the Illuminate Entrepreneurship Bootcamp at Malla Reddy University, run with E-Cell, IIT Bombay. I received a Certificate of Appreciation for organising and conducting it.',
       links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/dmC4zYPN' }],
     },
     {
       name: 'Startup Odyssey',
       subtitle: '13 Oct 2025 · Malla Reddy University',
       role: 'Event Lead',
-      description: 'Event lead for an entrepreneurship event at Malla Reddy University, run as an IE Club initiative.',
+      description: 'I led Startup Odyssey, an entrepreneurship event at Malla Reddy University run as an IE Club initiative.',
       links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/d5i7x4RX' }],
     },
     {
       name: 'NEC 2025 · IIT Bombay',
       subtitle: 'National Entrepreneurship Challenge · organised by E-Cell, IIT Bombay',
       role: 'University team · Finalist',
-      description: 'Represented my university’s team at IIT Bombay as part of the NEC 2025 finalist experience.',
+      description: 'I represented my university’s team at the National Entrepreneurship Challenge 2025. Our team secured Rank 47 in the Advanced Track.',
       links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/dz49MpgB' }],
     },
   ],
@@ -86,7 +86,7 @@ export const leadership = {
 
 /**
  * Gallery shown as a scrolling strip.
- * - `photo`: the owner's own photo, not linked.
+ * - `photo`: the owner's own photo or certificate, not linked.
  * - `post` with a `file`: an image card that links to the owner's LinkedIn post.
  * `fit: 'contain'` keeps posters whole (their text is part of the image) on a matching `bg`.
  * Every card needs an image `file` in public/ie/ (with its real width and height).
@@ -127,6 +127,16 @@ export const gallery = [
   },
   {
     type: 'photo',
+    file: 'ie/nec-certificate.webp',
+    width: 1100,
+    height: 850,
+    fit: 'contain',
+    bg: '#090d2b',
+    alt: 'Certificate from E-Cell, IIT Bombay for the National Entrepreneurship Challenge 2025, congratulating the team on securing Rank 47 in the Advanced Track',
+    caption: 'NEC 2025 · Advanced Track · Rank 47',
+  },
+  {
+    type: 'photo',
     file: 'ie/startup-odyssey-2.webp',
     width: 1100,
     height: 619,
@@ -141,5 +151,15 @@ export const gallery = [
     height: 750,
     alt: 'A group of students in matching dark blazers standing in front of a Malla Reddy University backdrop',
     caption: 'Illuminate',
+  },
+  {
+    type: 'photo',
+    file: 'ie/illuminate-certificate.webp',
+    width: 1100,
+    height: 779,
+    fit: 'contain',
+    bg: '#ffffff',
+    alt: 'Illuminate Certificate of Appreciation from E-Cell, IIT Bombay for organising and conducting the Illuminate Entrepreneurship Bootcamp at Malla Reddy University on 4 September 2025',
+    caption: 'Illuminate · Certificate of Appreciation',
   },
 ]

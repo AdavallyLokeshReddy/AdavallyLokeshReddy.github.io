@@ -21,7 +21,7 @@ export const flagship = {
   demo: null,
   docs: null,
   overview:
-    'Rather than building a standalone classifier, I am building a governed agentic architecture around medical imaging models: an orchestrator that coordinates tools, verifies their evidence, hands uncertain cases to a human reviewer, and records an audit trail. The broader vision covers CT, MRI and X-ray through modality-specific pipelines. The current focus is non-contrast head CT, with MRI and X-ray started and in development.',
+    'I am not building a standalone classifier. I am building a governed, agentic architecture around medical imaging models: an orchestrator that coordinates tools, checks their evidence, passes uncertain cases to a human reviewer and keeps an audit trail. The longer-term aim is to cover CT, MRI and X-ray through separate, modality-specific pipelines. For now the focus is non-contrast head CT; MRI and X-ray work has started and is in development.',
   problem:
     'Head CT triage involves repetitive, time-sensitive steps: preparing images, running analysis, checking the results and routing them. I am exploring how much of that workflow can be structured in software while keeping a person in control of every decision.',
   why: 'A model output is only useful if it is verifiable, traceable and fits an existing workflow. That makes the engineering around the model (verification, uncertainty handling, human review, auditability) as important as the model itself.',
@@ -86,7 +86,7 @@ export const projects = [
     id: 'rag',
     title: 'RAG Question-Answering Bot',
     category: 'GenAI · Retrieval',
-    summary: 'A retrieval-based question-answering application that answers questions from a document collection.',
+    summary: 'A question-answering bot that finds the relevant passages in a set of documents and uses them to write its answer.',
     tags: ['OpenAI', 'Pinecone', 'RAG'],
     status: 'Built',
     flowTitle: 'How it answers',

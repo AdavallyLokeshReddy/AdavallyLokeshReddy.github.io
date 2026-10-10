@@ -9,6 +9,7 @@ export const skillGroups = [
       { name: 'Python', level: 'used' },
       { name: 'Java', level: 'learning' },
       { name: 'SQL', level: 'learning' },
+      { name: 'Data structures & algorithms', level: 'learning' },
     ],
   },
   {
@@ -40,6 +41,7 @@ export const skillGroups = [
       { name: 'DICOM workflows', level: 'developing' },
       { name: 'FastAPI', level: 'developing' },
       { name: 'PostgreSQL', level: 'developing' },
+      { name: 'AWS cloud fundamentals', level: 'learning' },
     ],
   },
 ]
