@@ -27,7 +27,7 @@ Without a key, the form validates and opens a pre-filled email draft instead; it
 ## Deploy to GitHub Pages
 
 1. Create a public repo named `AdavallyLokeshReddy.github.io` and push this project to `main`.
-2. Repo **Settings → Pages → Source: GitHub Actions**.
+2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do not use "Deploy from a branch": it publishes the unbuilt source and the site renders blank.
 3. Repo **Settings → Secrets and variables → Actions → New repository secret**: `WEB3FORMS_KEY` = your public Web3Forms key.
 4. Every push to `main` runs `.github/workflows/deploy.yml` (lint, build, deploy). Live at https://adavallylokeshreddy.github.io/
 
@@ -36,4 +36,4 @@ For a differently named repo, set `VITE_BASE=/<repo>/` in the workflow's build s
 ### Other hosts
 
 `npm run build` outputs static files to `dist/`. Deploy to Vercel, Netlify, GitHub Pages or Cloudflare Pages (build command `npm run build`, output `dist`).
-After you have a real domain: add a canonical URL, absolute `og:image` / `og:url` tags in `index.html`, and a sitemap.
+If you move to a custom domain, update the canonical URL and `og:` / `twitter:` URLs in `index.html` and the URLs in `public/sitemap.xml` and `public/robots.txt`.
