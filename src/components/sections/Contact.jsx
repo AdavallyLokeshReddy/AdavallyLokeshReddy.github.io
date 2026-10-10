@@ -105,7 +105,7 @@ export default function Contact() {
     <section id="contact" aria-labelledby="contact-title" className="border-t border-line py-24 md:py-36">
       <div className="container-x grid gap-16 lg:grid-cols-[1fr_1fr] lg:gap-24">
         <div>
-          <SectionHeading id="contact-title" index="06" kicker="Contact" title="Have a meaningful problem to solve?" />
+          <SectionHeading id="contact-title" index="07" kicker="Contact" title="Have a meaningful problem to solve?" />
           <FadeIn className="-mt-4 space-y-8">
             <p className="max-w-md text-lg text-muted">
               I’m looking for AI/ML and software internships or entry-level roles, and I’m glad to talk about projects,

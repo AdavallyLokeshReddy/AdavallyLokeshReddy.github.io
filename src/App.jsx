@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Leadership from './components/sections/Leadership'
 import About from './components/sections/About'
 import Approach from './components/sections/Approach'
+import Education from './components/sections/Education'
 import Contact from './components/sections/Contact'
 import Skills from './components/sections/Skills'
 import Work from './components/sections/Work'
@@ -28,6 +29,7 @@ export default function App() {
         <About />
         <Approach />
         <Skills />
+        <Education />
         <Contact />
       </main>
       <Footer />

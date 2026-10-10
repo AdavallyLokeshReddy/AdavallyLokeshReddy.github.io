@@ -43,6 +43,17 @@ export default function ProjectVisual({ id, className = '' }) {
           <path d="M30 108 H290" className="stroke-muted" strokeDasharray="4 4" />
         </g>
       )}
+
+      {id === 'hawkeye' && (
+        <g fill="none" strokeWidth="1.5">
+          <rect x="52" y="52" width="86" height="64" rx="3" className="stroke-fg" />
+          <rect x="176" y="84" width="90" height="70" rx="3" className="stroke-accent" />
+          <path d="M138 84 C158 84 160 112 176 116" className="stroke-muted" strokeDasharray="4 4" />
+          <path d="M52 52 h14 M52 52 v14 M138 116 h-14 M138 116 v-14" className="stroke-accent" />
+          <circle cx="221" cy="119" r="4" className="fill-accent stroke-none" />
+          <path d="M221 104 v10 M221 124 v10 M206 119 h10 M226 119 h10" className="stroke-fg" />
+        </g>
+      )}
     </svg>
   )
 }

@@ -27,7 +27,7 @@ export default function FeaturedProject() {
           </h3>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Status status="in-progress" />
-            <span className="label">Non-contrast head CT</span>
+            <span className="label">CT · MRI · X-ray</span>
           </div>
           <p className="mt-6 text-lg leading-relaxed text-muted">{p.scope}</p>
 
@@ -78,8 +78,29 @@ export default function FeaturedProject() {
       </div>
 
       <div className="mt-16 border-t border-line pt-8 md:mt-24">
+        <h3 className="label mb-3 flex gap-3">
+          <span className="text-accent">06</span>Modality status
+        </h3>
+        <p className="mb-8 max-w-2xl text-muted">{p.modalityNote}</p>
+        <ul className="grid gap-4 md:grid-cols-3">
+          {p.modalities.map((m) => (
+            <li key={m.id} className="flex flex-col gap-3 rounded-lg border border-line p-5">
+              <div>
+                <p className="text-2xl font-semibold tracking-tight">{m.name}</p>
+                <p className="label mt-1">{m.full}</p>
+              </div>
+              <p className="text-sm leading-relaxed text-muted">{m.note}</p>
+              <div className="mt-auto pt-2">
+                <Status status={m.status} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-16 border-t border-line pt-8 md:mt-24">
         <h3 className="label mb-8 flex gap-3">
-          <span className="text-accent">06</span>Architecture & inference pipeline
+          <span className="text-accent">07</span>Architecture & inference pipeline (CT)
         </h3>
         <ProjectArchitecture stages={p.stages} />
       </div>
@@ -87,7 +108,7 @@ export default function FeaturedProject() {
       <div className="mt-16 grid gap-10 md:mt-24 md:grid-cols-2 lg:gap-16">
         <FadeIn className="border-t border-line pt-6">
           <h3 className="label mb-5 flex gap-3">
-            <span className="text-accent">07</span>Engineering decisions & trade-offs
+            <span className="text-accent">08</span>Engineering decisions & trade-offs
           </h3>
           <dl className="space-y-5">
             {p.decisions.map((d) => (
@@ -101,7 +122,7 @@ export default function FeaturedProject() {
 
         <FadeIn className="border-t border-line pt-6">
           <h3 className="label mb-5 flex gap-3">
-            <span className="text-accent">08</span>Challenges & open questions
+            <span className="text-accent">09</span>Challenges & open questions
           </h3>
           <ul className="space-y-3 text-muted">
             {p.challenges.map((c) => (
@@ -115,7 +136,7 @@ export default function FeaturedProject() {
 
         <FadeIn className="border-t border-line pt-6 md:col-span-2">
           <h3 className="label mb-5 flex gap-3">
-            <span className="text-accent">09</span>Next milestones
+            <span className="text-accent">10</span>Next milestones
           </h3>
           <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {p.milestones.map((m, i) => (

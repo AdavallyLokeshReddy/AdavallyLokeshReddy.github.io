@@ -2,7 +2,6 @@ import { useRef, useState } from 'react'
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
 import { ArrowUpRight, Minus, Plus } from 'lucide-react'
 import { projects } from '../data/projects'
-import { profile } from '../data/profile'
 import { useFinePointer } from '../hooks/useFinePointer'
 import FadeIn from './motion/FadeIn'
 import ProjectVisual from './ProjectVisual'
@@ -127,16 +126,20 @@ export default function Projects() {
                     <div id={`d-${pr.id}`} className="md:col-span-11 md:col-start-2">
                       <p className="max-w-2xl text-base leading-relaxed md:text-lg">{pr.detail}</p>
                       <p className="mt-5">
-                        <a
-                          href={pr.repo ?? profile.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm text-accent underline-offset-4 hover:underline"
-                        >
-                          {pr.repo ? 'View repository' : 'See my work on GitHub'}
-                          <ArrowUpRight size={14} aria-hidden="true" />
-                          <span className="sr-only">(opens in a new tab)</span>
-                        </a>
+                        {pr.repo ? (
+                          <a
+                            href={pr.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-sm text-accent underline-offset-4 hover:underline"
+                          >
+                            View repository
+                            <ArrowUpRight size={14} aria-hidden="true" />
+                            <span className="sr-only">(opens in a new tab)</span>
+                          </a>
+                        ) : (
+                          <span className="label normal-case tracking-normal">No public repository or demo.</span>
+                        )}
                       </p>
                     </div>
                   )}

@@ -1,4 +1,3 @@
-import { credentials, education } from '../../data/profile'
 import { levelLabel, marqueeItems, skillGroups } from '../../data/skills'
 import FadeIn from '../motion/FadeIn'
 import SectionHeading from '../ui/SectionHeading'
@@ -28,11 +27,10 @@ function Marquee() {
 }
 
 export default function Skills() {
-  const verified = credentials.filter((c) => c.verified)
   return (
     <section id="skills" aria-labelledby="skills-title" className="border-t border-line py-24 md:py-36">
       <div className="container-x">
-        <SectionHeading id="skills-title" index="05" kicker="Skills & education" title="What I work with, honestly labelled." />
+        <SectionHeading id="skills-title" index="05" kicker="Skills" title="What I work with, honestly labelled." />
 
         <FadeIn>
           <ul className="mb-12 flex flex-wrap gap-x-6 gap-y-2" aria-label="Legend">
@@ -65,33 +63,6 @@ export default function Skills() {
 
       <div className="my-20 md:my-28">
         <Marquee />
-      </div>
-
-      <div className="container-x">
-        <FadeIn className="grid gap-6 border-t border-line pt-8 md:grid-cols-12">
-          <h3 className="label md:col-span-3">Education</h3>
-          <div className="md:col-span-9">
-            <p className="text-2xl font-semibold tracking-tight md:text-3xl">{education.degree}</p>
-            <p className="mt-2 text-muted">
-              {education.school} · {education.years} · CGPA {education.cgpa}
-            </p>
-          </div>
-        </FadeIn>
-
-        {verified.length > 0 && (
-          <FadeIn className="mt-10 grid gap-6 border-t border-line pt-8 md:grid-cols-12">
-            <h3 className="label md:col-span-3">Certifications</h3>
-            <ul className="grid gap-4 md:col-span-9 md:grid-cols-3">
-              {verified.map((c) => (
-                <li key={c.name} className="border border-line p-5">
-                  <p className="font-semibold leading-snug">{c.name}</p>
-                  <p className="mt-2 text-sm text-muted">{c.issuer}</p>
-                  <p className="label mt-4 normal-case tracking-normal">{c.note}</p>
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
-        )}
       </div>
     </section>
   )

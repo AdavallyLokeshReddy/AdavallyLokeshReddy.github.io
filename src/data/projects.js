@@ -6,18 +6,18 @@
 
 export const flagship = {
   id: 'medical',
-  title: 'Agentic AI for Autonomous Medical Image Analysis and Clinical Workflow Automation',
+  title: 'Agentic AI for Multimodal Medical Image Analysis & Clinical Workflow Automation',
   category: 'Medical imaging · Agentic AI',
   status: 'Active development',
   scope:
-    'An AI-assisted system focused on non-contrast head CT analysis, with a broader goal of supporting structured medical-image processing and clinical workflow automation.',
+    'An AI-assisted system for medical image analysis and clinical workflow automation. The current focus is non-contrast head CT, with MRI and X-ray support started and in development.',
   disclaimer:
     'This is a research and engineering project in active development. It is not a clinically validated medical device, is not intended to diagnose patients or replace clinicians, and makes no claims about clinical accuracy, safety or regulatory compliance.',
   repo: 'https://github.com/AdavallyLokeshReddy/agentic-medical-image-analysis',
   demo: null,
   docs: null,
   overview:
-    'Rather than building a standalone classifier, I am building a governed agentic architecture around medical imaging models: an orchestrator that coordinates tools, verifies their evidence, hands uncertain cases to a human reviewer, and records an audit trail. The primary focus is non-contrast head CT.',
+    'Rather than building a standalone classifier, I am building a governed agentic architecture around medical imaging models: an orchestrator that coordinates tools, verifies their evidence, hands uncertain cases to a human reviewer, and records an audit trail. The broader vision covers CT, MRI and X-ray through modality-specific pipelines. The current focus is non-contrast head CT, with MRI and X-ray started and in development.',
   problem:
     'Head CT triage involves repetitive, time-sensitive steps: preparing images, running analysis, checking the results and routing them. I am exploring how much of that workflow can be structured in software while keeping a person in control of every decision.',
   why: 'A model output is only useful if it is verifiable, traceable and fits an existing workflow. That makes the engineering around the model (verification, uncertainty handling, human review, auditability) as important as the model itself.',
@@ -49,14 +49,23 @@ export const flagship = {
     'No end-to-end evaluation or clinical validation yet. Reliability of the full workflow is still being evaluated.',
     'Model-runtime integration and uncertainty handling are still being improved.',
     'Deciding how far autonomous tool execution can go under safety constraints.',
+    'Handling different modalities: CT, MRI and X-ray differ in format, preprocessing and evaluation, so the CT pipeline cannot simply be reused.',
     'Weights, datasets and case files are not published, so a public demo is not possible without proper authorisation and safeguards.',
   ],
   milestones: [
     'Strengthen the non-contrast head CT workflow',
     'Improve model-runtime integration, evidence verification and uncertainty handling',
-    'Expand tool execution under safety constraints',
-    'Evaluate end-to-end workflow reliability',
+    'Continue developing MRI- and X-ray-specific processing',
+    'Evaluate each modality workflow independently, then end-to-end reliability',
   ],
+  // Owner-confirmed: CT is the current focus; MRI and X-ray are started and in development (no validated pipelines yet).
+  modalities: [
+    { id: 'ct', name: 'CT', full: 'Computed Tomography', status: 'in-progress', note: 'Current focus: non-contrast head CT. Preprocessing and orchestration are under active testing; model-runtime integration is still being improved.' },
+    { id: 'mri', name: 'MRI', full: 'Magnetic Resonance Imaging', status: 'in-progress', note: 'Started and in development. No validated MRI pipeline or evaluation yet.' },
+    { id: 'xray', name: 'X-ray', full: 'Radiography', status: 'in-progress', note: 'Started and in development. No validated X-ray pipeline or evaluation yet.' },
+  ],
+  modalityNote:
+    'Each modality has its own formats, preprocessing, models and evaluation needs, so they are developed as separate pipelines rather than one shared model.',
   // Statuses follow the repository README ("implemented / under active testing" vs "in progress").
   stages: [
     { id: 'input', label: 'CT input & preprocessing', note: 'DICOM / CT-volume preprocessing. Under active testing', status: 'implemented' },
@@ -92,6 +101,18 @@ export const projects = [
     detail:
       'A trained classifier is saved with joblib and loaded by a small Flask app. A form takes six numeric measurements (diagonal, left and right height, lower and upper margin, length), validates them, and returns "Genuine" or "Fake". The repository includes the training notebook. I have not published evaluation figures, so none are claimed here.',
     repo: 'https://github.com/AdavallyLokeshReddy/Fake_bill',
+    demo: null,
+  },
+  {
+    id: 'hawkeye',
+    title: 'Hawk’Eye',
+    category: 'Computer vision',
+    summary: 'A computer-vision project on object detection and tracking.',
+    tags: ['Python', 'OpenCV', 'YOLO'],
+    status: 'Built',
+    detail:
+      'A computer-vision project using Python, OpenCV and YOLO for object detection and tracking. There is no public repository or demo for it, so none is linked here and no results are claimed.',
+    repo: null,
     demo: null,
   },
 ]
