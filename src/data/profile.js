@@ -9,10 +9,10 @@ export const profile = {
 }
 
 export const navItems = [
-  { id: 'work', label: 'Work' },
-  { id: 'leadership', label: 'Leadership' },
   { id: 'about', label: 'About' },
+  { id: 'work', label: 'Work' },
   { id: 'approach', label: 'Approach' },
+  { id: 'leadership', label: 'Leadership' },
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
 ]

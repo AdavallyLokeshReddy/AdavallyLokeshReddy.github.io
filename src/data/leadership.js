@@ -1,19 +1,82 @@
 /**
- * Leadership content. Only verified facts are published.
- * Roles and dates come from the owner: IE Cell, Joint Secretary (Feb 2025 – Dec 2025), then President (Dec 2025 – Feb 2026).
- * TODO(verify): add real responsibilities for each role when available.
+ * Leadership content. Only information the owner stated or that a public source confirms is published.
  *
- * `events` stays empty until each role is confirmed. An event renders only when it has a `role`
- * (use exactly one of: Organiser, Coordinator, Volunteer, Participant, Presenter) and, optionally, a `note`:
- *   { name: 'Event name', role: 'Participant', detail: 'Short factual detail.', note: 'Genuine takeaway' }
+ * Roles and dates (owner): IE Cell, Joint Secretary Feb 2025 – Dec 2025 (~11 months), then President Dec 2025 – Feb 2026 (~3 months).
+ * Event roles are the owner's own statements. Public checks: the Guinness World Records entry and NEC 2025 (E-Cell, IIT Bombay).
+ * Not independently verifiable (LinkedIn blocks automated reading): Navnirman 3.0 and Illuminate details, and every LinkedIn link.
+ * Startup Odyssey details come from the owner's own event photo (banner: 13.10.2025, "An IE Club Initiative").
+ * TODO(verify): confirm the organisation name (banners say "IE Club" / "Innovation and Entrepreneurship Club"; the owner says "IE Cell").
  */
 export const leadership = {
   organisation: 'IE Cell',
+  institution: 'Malla Reddy University',
   roles: [
-    { title: 'Joint Secretary', period: 'Feb 2025 – Dec 2025' },
-    { title: 'President', period: 'Dec 2025 – Feb 2026' },
+    { title: 'Joint Secretary', period: 'Feb 2025 – Dec 2025', length: '~11 months' },
+    { title: 'President', period: 'Dec 2025 – Feb 2026', length: '~3 months' },
   ],
-  events: [],
+
+  // How I work with people. Wording is careful: "experience in", "contributed to", "developing".
+  strengths: [
+    {
+      title: 'Planning & execution',
+      text: 'Experience planning events and following them through, from the first idea to the day itself, including the details that keep a plan on schedule.',
+    },
+    {
+      title: 'Team coordination',
+      text: 'Contributed to coordinating student teams: sharing out responsibilities and keeping everyone working towards the same plan.',
+    },
+    {
+      title: 'Communication & representation',
+      text: 'Communicating with participants and stakeholders, representing my university in external competition, and developing my public speaking.',
+    },
+    {
+      title: 'Initiative & creative strategy',
+      text: 'Supporting entrepreneurship and startup-related initiatives, and helping turn ideas into completed activities.',
+    },
+  ],
+
+  // `featured` gets larger type. `links` open in a new tab.
+  events: [
+    {
+      name: 'Agentic AI Hackathon · GDG Hyderabad',
+      subtitle: '21 Dec 2025 · Malla Reddy University',
+      role: 'Student Coordinator',
+      featured: true,
+      description:
+        'Student coordinator for the hackathon run by Google Developer Groups Hyderabad. The event set a Guinness World Records title for the most participants in an agentic AI hackathon (2,089 participants). The record belongs to the event; my part was student coordination.',
+      links: [
+        { label: 'LinkedIn post', url: 'https://lnkd.in/p/dHh_mEj6' },
+        { label: 'Guinness World Records entry', url: 'https://www.guinnessworldrecords.com/world-records/778051-most-participants-in-an-agentic-ai-hackathon' },
+      ],
+    },
+    {
+      name: 'Navnirman 3.0',
+      role: 'Main Student Coordinator',
+      description: 'Took the main student coordinator role for the event.',
+      links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/d-hCNp2u' }],
+    },
+    {
+      name: 'Illuminate',
+      subtitle: 'Workshop on Entrepreneurship',
+      role: 'Event Lead',
+      description: 'Event lead for a workshop on entrepreneurship.',
+      links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/dmC4zYPN' }],
+    },
+    {
+      name: 'Startup Odyssey',
+      subtitle: '13 Oct 2025 · Malla Reddy University',
+      role: 'Event Lead',
+      description: 'Event lead for an entrepreneurship event at Malla Reddy University, run as an IE Club initiative.',
+      links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/d5i7x4RX' }],
+    },
+    {
+      name: 'NEC 2025 · IIT Bombay',
+      subtitle: 'National Entrepreneurship Challenge · organised by E-Cell, IIT Bombay',
+      role: 'University team · Finalist',
+      description: 'Represented my university’s team at IIT Bombay as part of the NEC 2025 finalist experience.',
+      links: [{ label: 'LinkedIn post', url: 'https://lnkd.in/p/dz49MpgB' }],
+    },
+  ],
 }
 
 /**

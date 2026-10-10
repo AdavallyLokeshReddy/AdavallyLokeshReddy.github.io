@@ -24,10 +24,10 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Work />
-        <Leadership />
         <About />
+        <Work />
         <Approach />
+        <Leadership />
         <Skills />
         <Education />
         <Contact />

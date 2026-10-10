@@ -5,29 +5,27 @@ import SectionHeading from '../ui/SectionHeading'
 
 export default function About() {
   return (
-    <section id="about" aria-labelledby="about-title" className="border-t border-line py-24 md:py-36">
+    <section id="about" aria-labelledby="about-title" className="border-t border-line py-20 md:py-28">
       <div className="container-x">
-        <SectionHeading id="about-title" index="03" kicker="About" title="The person behind the systems." />
+        <SectionHeading id="about-title" index="01" kicker="About" title="The person behind the systems." />
 
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
-          <div className="lg:sticky lg:top-28 lg:self-start">
+          <div>
             <Portrait />
           </div>
 
           <FadeIn delay={0.1} className="space-y-6 text-lg leading-relaxed md:text-xl">
-            <p>
-              I’m Lokesh, a B.Tech student in Artificial Intelligence and Machine Learning at {education.school}, graduating
-              in 2027 and based in {profile.location.split(',')[0]}.
+            <p className="text-2xl font-medium leading-snug tracking-tight md:text-3xl">
+              I’m Lokesh, an AI/ML undergraduate at {education.school} in {profile.location.split(',')[0]}.
             </p>
             <p className="text-muted">
-              I’m most interested in the gap between a model that works in a notebook and a system someone can actually
-              use. That means medical imaging, retrieval-based GenAI, classical ML and the application code around them: data handling,
-              interfaces, and the checks that make outputs trustworthy.
+              I’m most interested in the gap between a model that works in a notebook and a system people can actually
+              rely on.
             </p>
             <p className="text-muted">
-              Right now I’m working on a head CT analysis pipeline, learning PyTorch and MONAI properly, and getting more
-              disciplined about evaluation. Alongside building, I’ve taken on leadership responsibility in IE Cell, as Joint Secretary and then President. I’m looking for an internship or entry-level role where I can contribute to a
-              real engineering team and learn from people who ship.
+              So I like to understand the problem first, build in small pieces I can test, and keep an eye on the details.
+              I’m working towards an AI/ML or GenAI internship where I can learn how dependable software is built and
+              shipped, from people who do it well.
             </p>
           </FadeIn>
         </div>

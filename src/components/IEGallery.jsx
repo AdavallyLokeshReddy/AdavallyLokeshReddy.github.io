@@ -5,7 +5,7 @@ import { Linkedin } from './ui/BrandIcons'
 
 const base = import.meta.env.BASE_URL
 const card =
-  'flex h-[330px] w-[270px] shrink-0 flex-col overflow-hidden rounded-lg border border-line bg-surface sm:h-[380px] sm:w-[330px] md:h-[420px] md:w-[400px]'
+  'flex h-[300px] w-[240px] shrink-0 flex-col overflow-hidden rounded-lg border border-line bg-surface sm:h-[330px] sm:w-[280px] md:h-[360px] md:w-[320px]'
 
 function Picture({ item, hidden }) {
   return (
