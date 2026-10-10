@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { Pause, Play } from 'lucide-react'
 import { levelLabel, marqueeItems, skillGroups } from '../../data/skills'
 import FadeIn from '../motion/FadeIn'
 import SectionHeading from '../ui/SectionHeading'
@@ -9,6 +11,7 @@ const dot = {
 }
 
 function Marquee() {
+  const [paused, setPaused] = useState(false)
   const group = (hidden) => (
     <ul className="marquee-group" aria-hidden={hidden || undefined}>
       {marqueeItems.map((m) => (
@@ -19,9 +22,22 @@ function Marquee() {
     </ul>
   )
   return (
-    <div className="marquee border-y border-line py-6" role="group" aria-label="Technologies I work with">
-      {group(false)}
-      {group(true)}
+    <div>
+      <div className="container-x mb-4 flex justify-end">
+        <button
+          type="button"
+          aria-pressed={paused}
+          onClick={() => setPaused((p) => !p)}
+          className="btn btn-ghost !min-h-[44px] !px-5 motion-reduce:hidden"
+        >
+          {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+          {paused ? 'Play technology strip' : 'Pause technology strip'}
+        </button>
+      </div>
+      <div className={`marquee border-y border-line py-6 ${paused ? 'is-paused' : ''}`} role="group" aria-label="Technologies I work with">
+        {group(false)}
+        {group(true)}
+      </div>
     </div>
   )
 }

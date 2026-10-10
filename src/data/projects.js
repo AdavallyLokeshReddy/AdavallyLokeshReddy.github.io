@@ -7,7 +7,11 @@
 export const flagship = {
   id: 'medical',
   title: 'Agentic AI for Multimodal Medical Image Analysis & Clinical Workflow Automation',
+  shortTitle: 'Agentic Medical Image Analysis',
   category: 'Medical imaging · Agentic AI',
+  brief:
+    'An agentic system that coordinates tools, verifies evidence and keeps a human reviewer in control. Current focus: non-contrast head CT, with MRI and X-ray in development.',
+  tags: ['Python', 'PyTorch', 'MONAI', 'FastAPI'],
   status: 'Active development',
   scope:
     'An AI-assisted system for medical image analysis and clinical workflow automation. The current focus is non-contrast head CT, with MRI and X-ray support started and in development.',

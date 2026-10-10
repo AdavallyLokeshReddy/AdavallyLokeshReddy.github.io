@@ -38,9 +38,6 @@
     @apply bg-bg text-fg font-sans antialiased;
     overflow-x: hidden;
   }
-  section[id] {
-    scroll-margin-top: 4.5rem;
-  }
   ::selection {
     background: rgb(var(--accent));
     color: rgb(var(--accent-ink));
@@ -137,6 +134,21 @@ button:focus-visible .roll > span {
   }
 }
 
+/* Gallery variant: cards instead of words, edge fade, user-controlled pause */
+.marquee-cards {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+.marquee-cards .marquee-group {
+  justify-content: flex-start;
+  gap: 1.25rem;
+  padding-right: 1.25rem;
+  animation-duration: 70s;
+}
+.marquee.is-paused .marquee-group {
+  animation-play-state: paused;
+}
+
 /* Custom cursor is opt-in via a class on <html>, set only for fine pointers */
 html.has-custom-cursor,
 html.has-custom-cursor a,
@@ -175,6 +187,13 @@ html.has-custom-cursor select {
   }
   .marquee-group[aria-hidden='true'] {
     display: none;
+  }
+  .marquee-cards {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-cards .marquee-group {
+    padding: 0 1.25rem;
   }
   .pulse-dot,
   .scroll-cue-line {

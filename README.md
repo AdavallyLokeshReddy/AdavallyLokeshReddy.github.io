@@ -17,6 +17,7 @@ All copy lives in `src/data/`:
 
 - `projects.js` — flagship case study, pipeline stage statuses, supporting projects. Search for `TODO(verify)`.
 - `skills.js` — skills with honest levels (`used` / `developing` / `learning`).
+- `leadership.js` — IE Cell roles and dates, events (only shown once a role is set), and the photo / LinkedIn gallery. Photos live in `public/ie/`.
 - `profile.js` — contact links, education, and credentials (a credential only renders when `verified: true`).
 
 ## Contact form

@@ -12,6 +12,23 @@ export default function ProjectVisual({ id, className = '' }) {
         ))}
       </g>
 
+      {id === 'medical' && (
+        <g fill="none" strokeWidth="1.5">
+          <rect x="24" y="48" width="56" height="26" rx="4" className="stroke-fg" />
+          <rect x="24" y="87" width="56" height="26" rx="4" className="stroke-fg" />
+          <rect x="24" y="126" width="56" height="26" rx="4" className="stroke-muted" strokeDasharray="4 4" />
+          <path d="M80 61 H118 M80 100 H118 M80 139 H118" className="stroke-muted" />
+          <circle cx="146" cy="100" r="28" className="stroke-accent" />
+          <circle cx="146" cy="100" r="6" className="fill-accent stroke-none" />
+          <path d="M174 100 H206" className="stroke-muted" />
+          <rect x="206" y="72" width="46" height="56" rx="4" className="stroke-fg" />
+          <path d="M216 90 h26 M216 100 h26 M216 110 h14" className="stroke-muted" />
+          <path d="M252 100 H272" className="stroke-muted" />
+          <circle cx="290" cy="100" r="14" className="stroke-accent" />
+          <path d="M283 100 l5 5 l9 -10" className="stroke-accent" />
+        </g>
+      )}
+
       {id === 'rag' && (
         <g fill="none" strokeWidth="1.5">
           <rect x="30" y="40" width="70" height="26" rx="4" className="stroke-fg" />

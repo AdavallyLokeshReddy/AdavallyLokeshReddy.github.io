@@ -7,29 +7,24 @@ import Status from './ui/Status'
 function Block({ n, title, children }) {
   return (
     <FadeIn className="border-t border-line pt-6">
-      <h3 className="label mb-4 flex gap-3">
+      <h4 className="label mb-4 flex gap-3">
         <span className="text-accent">{n}</span>
         {title}
-      </h3>
+      </h4>
       <div className="space-y-3 text-base leading-relaxed text-fg/90 md:text-lg">{children}</div>
     </FadeIn>
   )
 }
 
-export default function FeaturedProject() {
+/** Full case study. Rendered inside the project list, only when "View details" is open. */
+export default function FlagshipDetails() {
   return (
-    <article aria-labelledby="flagship-title">
+    <div className="pt-4">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        <FadeIn className="lg:sticky lg:top-28 lg:self-start">
-          <p className="label mb-4">Featured case study · {p.category}</p>
-          <h3 id="flagship-title" className="text-3xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
-            {p.title}
-          </h3>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Status status="in-progress" />
-            <span className="label">CT · MRI · X-ray</span>
-          </div>
-          <p className="mt-6 text-lg leading-relaxed text-muted">{p.scope}</p>
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="label mb-4">Case study</p>
+          <h4 className="text-2xl font-semibold leading-[1.1] tracking-tight md:text-3xl">{p.title}</h4>
+          <p className="mt-5 text-lg leading-relaxed text-muted">{p.scope}</p>
 
           <p className="mt-8 flex gap-3 rounded-lg border border-line p-4 text-sm leading-relaxed text-muted">
             <ShieldAlert size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
@@ -40,12 +35,7 @@ export default function FeaturedProject() {
           </p>
 
           <p className="mt-6">
-            <a
-              href={p.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
+            <a href={p.repo} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               View repository
               <ArrowUpRight size={16} aria-hidden="true" />
               <span className="sr-only">(opens in a new tab)</span>
@@ -54,7 +44,7 @@ export default function FeaturedProject() {
           <p className="label mt-4 normal-case tracking-normal">
             No public demo. Model weights, datasets and case files are not published.
           </p>
-        </FadeIn>
+        </div>
 
         <div className="space-y-10">
           <Block n="01" title="Overview">
@@ -77,10 +67,10 @@ export default function FeaturedProject() {
         </div>
       </div>
 
-      <div className="mt-16 border-t border-line pt-8 md:mt-24">
-        <h3 className="label mb-3 flex gap-3">
+      <div className="mt-16 border-t border-line pt-8 md:mt-20">
+        <h4 className="label mb-3 flex gap-3">
           <span className="text-accent">06</span>Modality status
-        </h3>
+        </h4>
         <p className="mb-8 max-w-2xl text-muted">{p.modalityNote}</p>
         <ul className="grid gap-4 md:grid-cols-3">
           {p.modalities.map((m) => (
@@ -98,18 +88,18 @@ export default function FeaturedProject() {
         </ul>
       </div>
 
-      <div className="mt-16 border-t border-line pt-8 md:mt-24">
-        <h3 className="label mb-8 flex gap-3">
+      <div className="mt-16 border-t border-line pt-8 md:mt-20">
+        <h4 className="label mb-8 flex gap-3">
           <span className="text-accent">07</span>Architecture & inference pipeline (CT)
-        </h3>
+        </h4>
         <ProjectArchitecture stages={p.stages} />
       </div>
 
-      <div className="mt-16 grid gap-10 md:mt-24 md:grid-cols-2 lg:gap-16">
+      <div className="mt-16 grid gap-10 md:mt-20 md:grid-cols-2 lg:gap-16">
         <FadeIn className="border-t border-line pt-6">
-          <h3 className="label mb-5 flex gap-3">
+          <h4 className="label mb-5 flex gap-3">
             <span className="text-accent">08</span>Engineering decisions & trade-offs
-          </h3>
+          </h4>
           <dl className="space-y-5">
             {p.decisions.map((d) => (
               <div key={d.t}>
@@ -121,9 +111,9 @@ export default function FeaturedProject() {
         </FadeIn>
 
         <FadeIn className="border-t border-line pt-6">
-          <h3 className="label mb-5 flex gap-3">
+          <h4 className="label mb-5 flex gap-3">
             <span className="text-accent">09</span>Challenges & open questions
-          </h3>
+          </h4>
           <ul className="space-y-3 text-muted">
             {p.challenges.map((c) => (
               <li key={c} className="flex gap-3">
@@ -135,9 +125,9 @@ export default function FeaturedProject() {
         </FadeIn>
 
         <FadeIn className="border-t border-line pt-6 md:col-span-2">
-          <h3 className="label mb-5 flex gap-3">
+          <h4 className="label mb-5 flex gap-3">
             <span className="text-accent">10</span>Next milestones
-          </h3>
+          </h4>
           <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {p.milestones.map((m, i) => (
               <li key={m} className="rounded-lg border border-dashed border-line p-4">
@@ -148,6 +138,6 @@ export default function FeaturedProject() {
           </ol>
         </FadeIn>
       </div>
-    </article>
+    </div>
   )
 }

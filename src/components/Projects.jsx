@@ -1,11 +1,25 @@
 import { useRef, useState } from 'react'
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
 import { ArrowUpRight, Minus, Plus } from 'lucide-react'
-import { projects } from '../data/projects'
+import { flagship, projects } from '../data/projects'
+import FlagshipDetails from './FeaturedProject'
 import { useFinePointer } from '../hooks/useFinePointer'
 import FadeIn from './motion/FadeIn'
 import ProjectVisual from './ProjectVisual'
 import Status from './ui/Status'
+
+// The flagship appears in the same list as every other project; its full case study opens under "View details".
+const items = [
+  {
+    id: flagship.id,
+    title: flagship.shortTitle,
+    category: flagship.category,
+    summary: flagship.brief,
+    tags: flagship.tags,
+    state: 'in-progress',
+  },
+  ...projects,
+]
 
 const PW = 320 // preview width
 const PH = 200 // preview height
@@ -25,7 +39,7 @@ export default function Projects() {
   const reduce = useReducedMotion()
   const previewOn = fine && !reduce
   const [active, setActive] = useState(null)
-  const [last, setLast] = useState(projects[0].id)
+  const [last, setLast] = useState(items[0].id)
   const [open, setOpen] = useState(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -67,7 +81,7 @@ export default function Projects() {
     <div onPointerMove={onMove}>
       <FadeIn>
         <ul className="border-b border-line">
-          {projects.map((pr, i) => {
+          {items.map((pr, i) => {
             const expanded = open === pr.id
             return (
               <li
@@ -82,9 +96,9 @@ export default function Projects() {
                 onPointerLeave={hide}
               >
                 <article className="grid gap-6 py-8 md:grid-cols-12 md:gap-8 md:py-10" aria-labelledby={`p-${pr.id}`}>
-                  <p className="label md:col-span-1">{String(i + 2).padStart(2, '0')}</p>
+                  <p className="label md:col-span-1">{String(i + 1).padStart(2, '0')}</p>
 
-                  <div className={`md:col-span-7 ${i === 1 ? 'lg:col-span-6 lg:col-start-3' : 'lg:col-span-6'}`}>
+                  <div className={`md:col-span-7 ${i % 2 === 1 ? 'lg:col-span-6 lg:col-start-3' : 'lg:col-span-6'}`}>
                     <p className="label mb-3">{pr.category}</p>
                     <h3 id={`p-${pr.id}`} className="text-3xl font-semibold tracking-tight md:text-5xl">
                       {pr.title}
@@ -100,10 +114,11 @@ export default function Projects() {
                   </div>
 
                   <div className="flex flex-col items-start gap-5 md:col-span-4 md:items-end lg:col-span-3">
-                    <Status status="implemented" />
+                    <Status status={pr.state ?? 'implemented'} />
                     <button
                       type="button"
                       aria-expanded={expanded}
+                      aria-label={`${expanded ? 'Hide' : 'View'} details: ${pr.title}`}
                       aria-controls={`d-${pr.id}`}
                       onClick={() => setOpen(expanded ? null : pr.id)}
                       onFocus={(e) => onFocus(pr.id, e.currentTarget.closest('article'))}
@@ -122,7 +137,13 @@ export default function Projects() {
                     </div>
                   )}
 
-                  {expanded && (
+                  {expanded && pr.id === flagship.id && (
+                    <div id={`d-${pr.id}`} className="md:col-span-12">
+                      <FlagshipDetails />
+                    </div>
+                  )}
+
+                  {expanded && pr.id !== flagship.id && (
                     <div id={`d-${pr.id}`} className="md:col-span-11 md:col-start-2">
                       <p className="max-w-2xl text-base leading-relaxed md:text-lg">{pr.detail}</p>
                       <p className="mt-5">

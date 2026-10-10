@@ -1,9 +1,11 @@
 import FadeIn from '../motion/FadeIn'
+import IEGallery from '../IEGallery'
 import SectionHeading from '../ui/SectionHeading'
 import { leadership } from '../../data/leadership'
 
 export default function Leadership() {
   const events = leadership.events.filter((e) => e.name && e.role)
+  const last = leadership.roles.length - 1
   return (
     <section id="leadership" aria-labelledby="leadership-title" className="border-t border-line py-24 md:py-36">
       <div className="container-x">
@@ -26,11 +28,13 @@ export default function Leadership() {
                   <span
                     aria-hidden="true"
                     className={`absolute -left-[37px] top-2 h-3 w-3 rounded-full border md:-left-[45px] ${
-                      i === leadership.roles.length - 1 ? 'border-accent bg-accent' : 'border-fg bg-bg'
+                      i === last ? 'border-accent bg-accent' : 'border-fg bg-bg'
                     }`}
                   />
                   <FadeIn>
-                    <p className="label">{String(i + 1).padStart(2, '0')} · {r.duration}</p>
+                    <p className="label">
+                      {String(i + 1).padStart(2, '0')} · {r.period}
+                    </p>
                     <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">{r.title}</h3>
                     <p className="mt-1 text-muted">{leadership.organisation}</p>
                   </FadeIn>
@@ -56,6 +60,19 @@ export default function Leadership() {
             ))}
           </ul>
         )}
+      </div>
+
+      <div className="mt-20 md:mt-28">
+        <div className="container-x">
+          <FadeIn className="mb-8 md:mb-10">
+            <p className="label mb-3">Gallery · photos & posts</p>
+            <h3 className="text-3xl font-semibold tracking-tight md:text-5xl">IE Cell, in frames.</h3>
+            <p className="mt-4 max-w-xl text-muted">
+              Photos from Startup Odyssey and four of my LinkedIn posts. Each post opens on LinkedIn.
+            </p>
+          </FadeIn>
+        </div>
+        <IEGallery />
       </div>
     </section>
   )
