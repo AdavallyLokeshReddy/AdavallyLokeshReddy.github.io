@@ -39,7 +39,7 @@ export const credentialGroups = [
         name: 'Agentic AI for Autonomous Medical Image Analysis and Clinical Workflow Management',
         issuer: 'IEEE ICCSAI 2026 · Galgotias University, Greater Noida',
         date: 'Accepted · 28–30 Nov 2026',
-        note: 'Co-authored with G. Hariharan, Bachu Sai Jitesh and Ailneni Anirudh. A design proposal for a governed agentic imaging workflow, not a clinical trial. Accepted for in-person presentation; the camera-ready version is in preparation and it is not yet published.',
+        note: 'Co-authored with G. Hariharan, Bachu Sai Jitesh and Ailneni Anirudh. A design proposal for a governed agentic imaging workflow, not a clinical trial. Accepted for in-person presentation. The camera-ready version has been submitted; the paper is not yet published.',
       },
     ],
   },

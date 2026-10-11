@@ -113,19 +113,4 @@ export const projects = [
     repo: 'https://github.com/AdavallyLokeshReddy/Fake_bill',
     demo: null,
   },
-  {
-    id: 'hawkeye',
-    title: 'Hawk’Eye',
-    category: 'Computer vision',
-    summary: 'A computer-vision project on object detection and tracking.',
-    tags: ['Python', 'OpenCV', 'YOLO'],
-    status: 'Built',
-    flowTitle: 'What it does',
-    flow: [{ t: 'Takes images or video' }, { t: 'Detects objects (YOLO)' }, { t: 'Tracks them' }],
-    flowNote: 'No public repository or demo.',
-    detail:
-      'A computer-vision project using Python, OpenCV and YOLO for object detection and tracking. There is no public repository or demo for it, so none is linked here and no results are claimed.',
-    repo: null,
-    demo: null,
-  },
 ]
