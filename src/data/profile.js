@@ -41,6 +41,12 @@ export const credentialGroups = [
         date: 'Accepted · 28–30 Nov 2026',
         note: 'Co-authored with G. Hariharan, Bachu Sai Jitesh and Ailneni Anirudh. A design proposal for a governed agentic imaging workflow, not a clinical trial. Accepted for in-person presentation. The camera-ready version has been submitted; the paper is not yet published.',
       },
+      {
+        name: 'Hawk’Eye',
+        issuer: 'International Journal of Progressive Research in Engineering Management and Science (IJPREMS)',
+        date: 'Nov 2024',
+        note: 'Short paper describing the design of an assistive object and face recognition application. Co-authored; published in Vol. 4, Issue 11, pp. 1014–1016. DOI 10.58257/IJPREMS36558.',
+      },
     ],
   },
   {
