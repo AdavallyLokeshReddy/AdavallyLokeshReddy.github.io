@@ -10,11 +10,11 @@ export const flagship = {
   shortTitle: 'Agentic Medical Image Analysis',
   category: 'Medical imaging · Agentic AI',
   brief:
-    'An agentic system that coordinates tools, verifies evidence and keeps a human reviewer in control. Current focus: non-contrast head CT, with MRI and X-ray in development.',
+    'An agentic system that coordinates tools, verifies evidence and keeps a human reviewer in control. Current focus: non-contrast head CT, with MRI in development and X-ray planned.',
   tags: ['Python', 'PyTorch', 'MONAI', 'FastAPI'],
   status: 'Active development',
   scope:
-    'An AI-assisted system for medical image analysis and clinical workflow automation. The current focus is non-contrast head CT, with MRI and X-ray support started and in development.',
+    'An AI-assisted system for medical image analysis and clinical workflow automation. The current focus is non-contrast head CT, with MRI support in development and X-ray planned. It is the working prototype behind a paper accepted at IEEE ICCSAI 2026.',
   disclaimer:
     'This is a research and engineering project in active development. It is not a clinically validated medical device, is not intended to diagnose patients or replace clinicians, and makes no claims about clinical accuracy, safety or regulatory compliance.',
   repo: 'https://github.com/AdavallyLokeshReddy/agentic-medical-image-analysis',
@@ -53,20 +53,20 @@ export const flagship = {
     'No end-to-end evaluation or clinical validation yet. Reliability of the full workflow is still being evaluated.',
     'Model-runtime integration and uncertainty handling are still being improved.',
     'Deciding how far autonomous tool execution can go under safety constraints.',
-    'Handling different modalities: CT, MRI and X-ray differ in format, preprocessing and evaluation, so the CT pipeline cannot simply be reused.',
+    'Handling different modalities: CT, MRI and X-ray (planned) differ in format, preprocessing and evaluation, so the CT pipeline cannot simply be reused.',
     'Weights, datasets and case files are not published, so a public demo is not possible without proper authorisation and safeguards.',
   ],
   milestones: [
     'Strengthen the non-contrast head CT workflow',
     'Improve model-runtime integration, evidence verification and uncertainty handling',
-    'Continue developing MRI- and X-ray-specific processing',
+    'Continue developing MRI-specific processing and plan X-ray support',
     'Evaluate each modality workflow independently, then end-to-end reliability',
   ],
-  // Owner-confirmed: CT is the current focus; MRI and X-ray are started and in development (no validated pipelines yet).
+  // CT is the current focus; MRI is in development; X-ray is planned (no X-ray code in the repository as of the Oct 2026 audit).
   modalities: [
     { id: 'ct', name: 'CT', full: 'Computed Tomography', status: 'in-progress', note: 'Current focus: non-contrast head CT. Preprocessing and orchestration are under active testing; model-runtime integration is still being improved.' },
     { id: 'mri', name: 'MRI', full: 'Magnetic Resonance Imaging', status: 'in-progress', note: 'Started and in development. No validated MRI pipeline or evaluation yet.' },
-    { id: 'xray', name: 'X-ray', full: 'Radiography', status: 'in-progress', note: 'Started and in development. No validated X-ray pipeline or evaluation yet.' },
+    { id: 'xray', name: 'X-ray', full: 'Radiography', status: 'planned', note: 'Planned. There is no X-ray code in the repository yet.' },
   ],
   modalityNote:
     'Each modality has its own formats, preprocessing, models and evaluation needs, so they are developed as separate pipelines rather than one shared model.',
