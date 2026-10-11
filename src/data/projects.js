@@ -73,11 +73,11 @@ export const flagship = {
   // Statuses follow the repository README ("implemented / under active testing" vs "in progress").
   stages: [
     { id: 'input', label: 'CT input & preprocessing', note: 'DICOM / CT-volume preprocessing. Under active testing', status: 'implemented' },
-    { id: 'orchestrate', label: 'Agent orchestration', note: 'Case state, task graph, tool registry. Under active testing', status: 'implemented' },
+    { id: 'orchestrate', label: 'Agent orchestration', note: 'Case state, task graph, tool registry. Covered by automated tests that run in CI', status: 'implemented' },
     { id: 'infer', label: 'Tool & model inference', note: 'MONAI workflows; runtime integration being improved', status: 'in-progress' },
     { id: 'verify', label: 'Verification & safety', note: 'Evidence objects, safety contract. Uncertainty handling in progress', status: 'in-progress' },
-    { id: 'results', label: 'Structured report', note: 'Implemented, being expanded', status: 'implemented' },
-    { id: 'review', label: 'Human review & audit', note: 'Review lifecycle and audit trail; workflows being expanded', status: 'in-progress' },
+    { id: 'results', label: 'Structured report', note: 'Implemented and covered by automated tests; being expanded', status: 'implemented' },
+    { id: 'review', label: 'Human review & audit', note: 'Review lifecycle and audit trail are tested against PostgreSQL; workflows being expanded', status: 'in-progress' },
   ],
 }
 
